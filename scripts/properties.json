@@ -1,0 +1,8 @@
+{
+    "BOARD_SIZE" : 650,
+    "LIGHT_COLOR" : "white",
+    "DARK_COLOR" : "green",
+    "HIGH_LIGHT_COLOR" : "#b0d8ed",
+    "HIGH_LIGHT_COLOR_SECONDARY" : "#081c26",
+    "DEBUG_CHESS": true
+}
