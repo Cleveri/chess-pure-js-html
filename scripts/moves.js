@@ -454,12 +454,18 @@ function checkKingCheckedAfterMoving(piecePosition){
     var pieceToMovePos = getDirectionOfTheOtherPiece(position, piecePosition);
     var tempExposedBy = [];
     for(var i = 0; i < exposedBy.length; i++){
+        if(checkedBy.piece !== ""){
+            break;
+        }
         if(exposedBy[i].direction == pieceToMovePos){
             tempExposedBy.push(exposedBy[i]);
+        } else if(pieceToMovePos.indexOf(exposedBy[i].direction) != -1){
+            if(exposedBy[i].piece.indexOf("Q") != -1 || exposedBy[i].piece.indexOf("B") != -1){
+                tempExposedBy.push(exposedBy[i]);
+            }
         }
     }
 
-    
     var checked = isKingChecked(tempExposedBy, whiteToMove, whiteKingPosition, false);
     if(checked){
         return tempExposedBy;

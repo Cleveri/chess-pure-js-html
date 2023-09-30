@@ -271,6 +271,7 @@ function checkWinner(){
 function canAnyoneCaptureChecker(positions){
     for(var i = 0; i < positions.length; i++){
         possibleFound = pieceMoves(positions[i], true);
+        console.log(possibleFound);
         for(var j = 0; j < possibleFound.length; j++){
             var squareToGo = possibleFound[j].length === 3 ? possibleFound[j].substring(0, 2) : possibleFound[j];
             if(possibleMovesToSaveCheck["any"].indexOf(squareToGo) != -1){
@@ -285,6 +286,7 @@ function playerCheckMated(position){
     var column = notationToColumns(position[0]);
     var row = position[1];
     var movesFound = getKingMoves(column, row, getPiece(document.getElementById(position)));
+    console.log(movesFound);
     if(whiteToMove){
         if(movesFound.length == 0 && whiteKingCheck){
             return true;

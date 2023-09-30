@@ -312,7 +312,7 @@ function loadImages(){
 }
 
 function loadImage(img, row, column){
-    if(BOARD_PIECES[row][column] == ""){
+    if(BOARD_PIECES[row][column] == "" || BOARD_PIECES[row][column] == "--"){
         return;
     }
     img.src = "./images/" + BOARD_PIECES[row][column] + ".png";
@@ -337,4 +337,33 @@ function showWinningBoard(show){
 
 function setHeader(text){
     document.getElementById("winningBoardHeader").innerText = text;
+}
+
+
+
+
+function generatePositions() {
+    var test = "["
+    for(var i = 0; i < rows.length; i++){
+        for(var j = 0; j < columns.length; j++){
+            if(j == 0 && i == 0){
+                test += `   [`
+            } else if(j == 0){
+                test += `    [`
+            }
+            var pieceFound = getPiece(document.getElementById(columns[j] + rows[i]));
+            if(pieceFound != null){
+                test += `"${pieceFound.piece}", `
+            } else {
+                test += `"--", `
+            }
+        }
+        test= test.substring(0, test.length - 2);
+        test += `],\n`
+    }
+    test += "];";
+
+
+
+    document.getElementById('generatePositions').value = test;
 }
